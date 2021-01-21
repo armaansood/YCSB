@@ -161,6 +161,11 @@ public class AzureCosmosClient extends DB {
     if (directMaxConnectionsPerEndpoint != -1) {
       directConnectionConfig.setMaxConnectionsPerEndpoint(directMaxConnectionsPerEndpoint);
     }
+    
+    int directMaxRequestsPerConnection = this.getIntProperty("azurecosmos.directMaxRequestsPerConnection", -1);
+    if (directMaxRequestsPerConnection != -1) {
+      directConnectionConfig.setMaxRequestsPerConnection(directMaxRequestsPerConnection);
+    }
 
     int directIdleConnectionTimeoutInSeconds = this.getIntProperty("azurecosmos.directIdleConnectionTimeoutInSeconds",
         -1);
